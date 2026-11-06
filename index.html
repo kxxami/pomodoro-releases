@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#161312">
+<meta name="description" content="Lern-Timer mit Streak, Punkten und Shop">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<title>Lern-Pomodoro</title>
+  <script type="module" crossorigin src="./assets/index-B-bouSUd.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C9kQMZMH.css">
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="wrap">
+  <div class="update" id="update" hidden>
+    <div class="tx"><b id="updTitle">Update bereit</b><span id="updMsg"></span></div>
+    <button class="main" id="updBtn">Installieren</button>
+    <button id="updLater" aria-label="Später">Später</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat" id="stStreak">
+      <svg class="flame" id="flame" viewBox="0 0 34 40" aria-hidden="true">
+        <path class="f1" id="fl1" d="M17 2C19 10 29 14 29 25a12 12 0 0 1-24 0c0-6 4-9 5-14 2 4 3 6 5 7 0-6 1-11 2-16Z"/>
+        <path class="f2" id="fl2" d="M17 20c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 2 2 3 0-3 0-5 1-7Z"/>
+      </svg>
+      <div style="min-width:0"><div class="big" id="streak">0</div><div class="lbl" id="streakLbl">Tage Streak</div></div>
+    </div>
+    <div class="stat" id="stPoints">
+      <div class="coin" aria-hidden="true">P</div>
+      <div><div class="big" id="points">0</div><div class="lbl">Punkte</div></div>
+    </div>
+    <div class="stat">
+      <div class="lvl" id="lvl">1</div>
+      <div style="flex:1;min-width:0"><div class="lbl" id="lvlLbl">Level 1</div><div class="xpbar"><i id="xp"></i></div></div>
+    </div>
+  </div>
+
+  <div class="card timer">
+    <div class="ring">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="track" cx="60" cy="60" r="54" fill="none" stroke-width="7"/>
+        <circle class="prog" id="prog" cx="60" cy="60" r="54" fill="none" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <button class="center" id="center" aria-label="Zeiten einstellen">
+        <span class="time" id="time">50:00</span>
+        <span class="sub" id="sub">Bereit</span>
+        <span class="boost" id="boostTag" hidden>2× Booster aktiv</span>
+        <span class="edit-hint" id="editHint">Tippen zum Einstellen</span>
+      </button>
+    </div>
+    <div class="settings" id="settings" hidden>
+      <label for="setWork">Lernen (min)<input id="setWork" type="number" min="1" max="180" inputmode="numeric"></label>
+      <label for="setBrk">Pause (min)<input id="setBrk" type="number" min="1" max="60" inputmode="numeric"></label>
+      <label for="setGoal">Tagesziel (min)<input id="setGoal" type="number" min="5" max="600" inputmode="numeric"></label>
+    </div>
+    <div class="ctrl" id="ctrlMain">
+      <button class="main" id="toggle">Start</button>
+      <button id="skip">Überspringen</button>
+      <button id="reset">Zurücksetzen</button>
+    </div>
+    <div class="ctrl" id="ctrlSet" hidden>
+      <button class="main" id="saveSet">Speichern</button>
+      <button id="cancelSet">Abbrechen</button>
+    </div>
+  </div>
+
+  <div class="card today">
+    <div class="todayrow"><span>Heute gelernt</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
+    <div class="bar"><i id="todayBar"></i></div>
+    <div class="sub" id="todayMsg">Schaff dein Tagesziel, damit die Flamme weiterbrennt.</div>
+  </div>
+
+  <div class="card">
+    <h2>Deine Lerntage</h2>
+    <div class="gridwrap"><div class="grid" id="grid"></div></div>
+    <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
+    <div class="info" id="info">Tippe auf einen Tag für Details.</div>
+  </div>
+
+  <div class="card">
+    <h2>Shop</h2>
+    <div class="shop" id="shop"></div>
+  </div>
+
+  <div class="card">
+    <h2>Sync mit GitHub</h2>
+    <div id="syncOff">
+      <p class="note">Dein Fortschritt liegt in einem privaten Gist auf deinem GitHub-Konto. So ist er auf Handy und PC gleich, und Claude kann den Timer starten. Du brauchst einmal pro Gerät einen Token, der nur Gists darf.</p>
+      <p class="note"><a id="tokenLink" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Lern-Pomodoro" target="_blank" rel="noopener">Token auf GitHub erstellen</a> (nur „gist“ ankreuzen), dann hier einfügen:</p>
+      <div class="row">
+        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub-Token">
+        <button class="main" id="connect">Verbinden</button>
+      </div>
+    </div>
+    <div id="syncOn" hidden>
+      <p class="note" id="syncInfo">Verbunden.</p>
+      <div class="row"><button id="syncNow">Jetzt synchronisieren</button><button id="disconnect">Trennen</button></div>
+    </div>
+  </div>
+
+  <div class="sync" id="sync">Speichert auf diesem Gerät</div>
+  <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
+</div>
+</body>
+</html>
