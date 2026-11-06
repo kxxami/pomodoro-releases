@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-B-bouSUd.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C9kQMZMH.css">
+  <script type="module" crossorigin src="./assets/index-CT4YEjpt.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C-zRPgZx.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -100,6 +100,18 @@
       <p class="note" id="syncInfo">Verbunden.</p>
       <div class="row"><button id="syncNow">Jetzt synchronisieren</button><button id="disconnect">Trennen</button></div>
     </div>
+  </div>
+
+  <div class="card" id="yptCard" hidden>
+    <h2>Mit YPT verbinden</h2>
+    <p class="note">Startest du hier eine Lernphase, öffnet sich YPT und sein Timer läuft mit. Nach der Lernphase stoppt der Pomodoro YPT wieder. Dafür zeigst du ihm einmal, welche Knöpfe du in YPT drückst.</p>
+    <ol class="steps">
+      <li><div><b>Bedienungshilfe einschalten</b><span id="yptS1">Unter „Installierte Apps“ den Dienst „Lern-Pomodoro: YPT steuern“ einschalten.</span></div><button id="yptSet">Öffnen</button></li>
+      <li><div><b>Start zeigen</b><span id="yptS2">YPT öffnet sich. Tippe auf dein Fach und auf Start, dann komm hierher zurück.</span></div><button id="yptRecStart">Zeigen</button></li>
+      <li><div><b>Stopp zeigen</b><span id="yptS3">Der YPT-Timer muss laufen. Tippe auf Stopp (und bestätige, falls YPT fragt), dann komm zurück.</span></div><button id="yptRecStop">Zeigen</button></li>
+    </ol>
+    <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
+    <div class="row" style="margin-top:10px"><button class="link" id="yptClear">Gezeigte Knöpfe löschen</button></div>
   </div>
 
   <div class="sync" id="sync">Speichert auf diesem Gerät</div>
