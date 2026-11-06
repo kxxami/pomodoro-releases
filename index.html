@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-CGoHiFFO.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BWVuT4yh.css">
+  <script type="module" crossorigin src="./assets/index-D60-tXta.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Bt0FZlQz.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -68,6 +68,11 @@
     </div>
   </div>
 
+  <div class="card" id="subjCard" hidden>
+    <div class="subjhead"><h2>Fächer</h2><button class="link" id="subjReload">Aus YPT laden</button></div>
+    <div class="subjects" id="subjects"></div>
+  </div>
+
   <div class="card today">
     <div class="todayrow"><span>Heute gelernt</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
     <div class="bar"><i id="todayBar"></i></div>
@@ -115,12 +120,10 @@
     </div>
     <div id="yptOnBox" hidden>
       <p class="note" id="yptWho">Angemeldet.</p>
-      <label class="field">Fach in YPT
-        <select id="yptSubject"></select>
-      </label>
+      <p class="note">Deine Fächer stehen oben unter dem Timer. Starte eins dort, dann läuft YPT für dieses Fach.</p>
       <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
       <p class="note" id="yptState" style="margin-top:10px"></p>
-      <div class="row"><button id="yptReload">Fächer neu laden</button><button class="link" id="yptLogout">Abmelden</button></div>
+      <div class="row"><button class="link" id="yptLogout">Abmelden</button></div>
     </div>
   </div>
 
