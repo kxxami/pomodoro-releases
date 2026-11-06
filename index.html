@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-CT4YEjpt.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C-zRPgZx.css">
+  <script type="module" crossorigin src="./assets/index-CGoHiFFO.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BWVuT4yh.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -102,16 +102,26 @@
     </div>
   </div>
 
-  <div class="card" id="yptCard" hidden>
+  <div class="card" id="yptCard">
     <h2>Mit YPT verbinden</h2>
-    <p class="note">Startest du hier eine Lernphase, öffnet sich YPT und sein Timer läuft mit. Nach der Lernphase stoppt der Pomodoro YPT wieder. Dafür zeigst du ihm einmal, welche Knöpfe du in YPT drückst.</p>
-    <ol class="steps">
-      <li><div><b>Bedienungshilfe einschalten</b><span id="yptS1">Unter „Installierte Apps“ den Dienst „Lern-Pomodoro: YPT steuern“ einschalten.</span></div><button id="yptSet">Öffnen</button></li>
-      <li><div><b>Start zeigen</b><span id="yptS2">YPT öffnet sich. Tippe auf dein Fach und auf Start, dann komm hierher zurück.</span></div><button id="yptRecStart">Zeigen</button></li>
-      <li><div><b>Stopp zeigen</b><span id="yptS3">Der YPT-Timer muss laufen. Tippe auf Stopp (und bestätige, falls YPT fragt), dann komm zurück.</span></div><button id="yptRecStop">Zeigen</button></li>
-    </ol>
-    <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
-    <div class="row" style="margin-top:10px"><button class="link" id="yptClear">Gezeigte Knöpfe löschen</button></div>
+    <p class="note">Jede Lernphase startet auch deinen YPT-Timer für ein Fach und stoppt ihn am Ende wieder. Das läuft über YPTs Server, auf Handy und PC. Die Verbindung ist inoffiziell: YPT kann sie jederzeit ändern, und sie kann gegen YPTs Nutzungsbedingungen verstoßen.</p>
+    <div id="yptOff">
+      <p class="note">Melde dich mit deiner YPT-E-Mail an. Das Passwort geht nur an YPT und wird nicht gespeichert. Konten mit Google-, Apple- oder Kakao-Login haben hier kein Passwort.</p>
+      <div class="form">
+        <input id="yptEmail" type="email" autocomplete="username" placeholder="YPT-E-Mail" aria-label="YPT-E-Mail">
+        <input id="yptPass" type="password" autocomplete="current-password" placeholder="YPT-Passwort" aria-label="YPT-Passwort">
+        <button class="main" id="yptLogin">Bei YPT anmelden</button>
+      </div>
+    </div>
+    <div id="yptOnBox" hidden>
+      <p class="note" id="yptWho">Angemeldet.</p>
+      <label class="field">Fach in YPT
+        <select id="yptSubject"></select>
+      </label>
+      <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
+      <p class="note" id="yptState" style="margin-top:10px"></p>
+      <div class="row"><button id="yptReload">Fächer neu laden</button><button class="link" id="yptLogout">Abmelden</button></div>
+    </div>
   </div>
 
   <div class="sync" id="sync">Speichert auf diesem Gerät</div>
