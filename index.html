@@ -9,11 +9,18 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-CFaMiUZC.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BEU-zH7p.css">
+  <script type="module" crossorigin src="./assets/index-eDvjDeHw.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DVwcZ0CA.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
+<header class="topbar">
+  <div class="topbar-in">
+    <span class="lvl lvl-top" id="lvlTop" aria-label="Level">1</span>
+    <span class="chip" id="stPoints" title="Punkte"><span data-icon="gi:two-coins" data-size="18"></span><b id="points">0</b><span class="sr">Punkte</span></span>
+    <span class="wallet-top" id="wallet"></span>
+  </div>
+</header>
 <div class="wrap">
   <div class="update" id="update" hidden>
     <div class="tx"><b id="updTitle">Update bereit</b><span id="updMsg"></span></div>
@@ -26,6 +33,7 @@
     <button id="penaltyOk">Verstanden</button>
   </div>
 
+  <section class="tab" data-tab="lernen">
   <div class="stats">
     <div class="stat" id="stStreak">
       <svg class="flame" id="flame" viewBox="0 0 34 40" aria-hidden="true">
@@ -33,10 +41,6 @@
         <path class="f2" id="fl2" d="M17 20c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 2 2 3 0-3 0-5 1-7Z"/>
       </svg>
       <div style="min-width:0"><div class="big" id="streak">0</div><div class="lbl" id="streakLbl">Tage Streak</div></div>
-    </div>
-    <div class="stat" id="stPoints">
-      <div class="coin" aria-hidden="true" data-icon="gi:two-coins" data-size="20"></div>
-      <div><div class="big" id="points">0</div><div class="lbl">Punkte</div></div>
     </div>
     <div class="stat">
       <div class="lvl" id="lvl">1</div>
@@ -82,6 +86,12 @@
     </div>
   </div>
 
+  <div class="card" id="quests">
+    <h2>Quests</h2>
+    <div class="quest-list" id="questsDay"></div>
+    <details class="quest-week"><summary id="questWeekSum">Diese Woche</summary><div class="quest-list" id="questsWeek"></div></details>
+  </div>
+
   <div class="card" id="subjCard" hidden>
     <div class="subjhead"><h2>Fächer</h2><button class="link" id="subjReload">Aus YPT laden</button></div>
     <div class="subjects" id="subjects"></div>
@@ -99,10 +109,11 @@
     <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
     <div class="info" id="info">Tippe auf einen Tag für Details.</div>
   </div>
+  </section>
 
+  <section class="tab" data-tab="kampagne" hidden>
   <div class="card">
     <div class="subjhead"><h2>AFK-Kampf</h2><span class="price" id="afkStage"></span></div>
-    <div class="wallet" id="wallet"></div>
     <div class="scene" id="afkScene"></div>
     <p class="note afk-note" id="afkBank"></p>
     <p class="note afk-note" id="afkRate"></p>
@@ -110,11 +121,33 @@
     <div class="wallet" id="afkLoot"></div>
     <div class="row game-btns">
       <button class="main" id="afkClaim">Abholen</button>
+      <button id="afkQuick"></button>
       <button id="afkFight">Nächste Stufe kämpfen</button>
       <button id="afkAuto">Stärkstes Team</button>
     </div>
   </div>
+  </section>
 
+  <section class="tab" data-tab="abenteuer" hidden>
+  <div class="card soon">
+    <div class="ic" aria-hidden="true" data-icon="gi:stone-tower" data-size="32"></div>
+    <div class="tx"><div class="nm">Turm</div><div class="ds">Endlos viele Etagen, jeder Versuch kostet ein Ticket. Kommt mit einem der nächsten Updates.</div></div>
+  </div>
+  <div class="card soon">
+    <div class="ic" aria-hidden="true" data-icon="gi:scroll-unfurled" data-size="32"></div>
+    <div class="tx"><div class="nm">Auftragstafel</div><div class="ds">Schicke Helden auf Aufträge, auch bei geschlossener App. Kommt mit einem der nächsten Updates.</div></div>
+  </div>
+  </section>
+
+  <section class="tab" data-tab="stadt" hidden>
+  <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Zur Stadt</button>
+  <div class="city" id="cityTiles">
+    <button class="tile-b" data-open="summon"><span data-icon="gi:wax-seal" data-size="40"></span><b>Beschwörung</b><span>Neue Heldenkarten</span></button>
+    <button class="tile-b" data-open="shop"><span data-icon="gi:shop" data-size="40"></span><b>Laden</b><span>Truhen, Siegel, Splitter</span></button>
+    <button class="tile-b" data-open="coll"><span data-icon="gi:book-pile" data-size="40"></span><b>Sammlung</b><span>Flammen und Titel</span></button>
+    <button class="tile-b" data-open="settings"><span data-icon="lu:settings" data-size="40"></span><b>Einstellungen</b><span>Sync und YPT</span></button>
+  </div>
+  <div data-building="summon" hidden>
   <div class="card">
     <h2>Beschwören</h2>
     <p class="note" id="sumHint"></p>
@@ -124,21 +157,24 @@
     </div>
     <p class="note odds" id="sumOdds"></p>
   </div>
-
-  <div class="card">
-    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
-    <div class="coll-tabs">
-      <button data-coll="hero">Karten</button><button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
-    </div>
-    <div class="coll" id="coll"></div>
-    <div class="info" id="collInfo"></div>
   </div>
-
+  <div data-building="shop" hidden>
   <div class="card">
     <h2>Shop</h2>
     <div class="shop" id="shop"></div>
   </div>
-
+  </div>
+  <div data-building="coll" hidden>
+  <div class="card">
+    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
+    <div class="coll-tabs">
+      <button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
+    </div>
+    <div class="coll" id="coll"></div>
+    <div class="info" id="collInfo"></div>
+  </div>
+  </div>
+  <div data-building="settings" hidden>
   <div class="card">
     <h2>Sync mit GitHub</h2>
     <div id="syncOff">
@@ -168,17 +204,37 @@
     </div>
     <div id="yptOnBox" hidden>
       <p class="note" id="yptWho">Angemeldet.</p>
-      <p class="note">Deine Fächer stehen oben unter dem Timer. Starte eins dort, dann läuft YPT für dieses Fach.</p>
+      <p class="note">Deine Fächer stehen im Tab Lernen. Starte eins dort, dann läuft YPT für dieses Fach.</p>
       <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
       <p class="note" id="yptState" style="margin-top:10px"></p>
       <div class="row"><button class="link" id="yptLogout">Abmelden</button></div>
     </div>
   </div>
-
   <div class="sync" id="sync">Speichert auf diesem Gerät</div>
   <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
   <div class="sync credits">Icons: <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC), <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0)</div>
+  </div>
+  </section>
+
+  <section class="tab" data-tab="helden" hidden>
+  <div class="card">
+    <div class="subjhead"><h2>Helden</h2><span class="price" id="heroCount"></span></div>
+    <div class="team-row"><div class="side" id="heroTeamRow"></div><button id="heroAuto">Stärkstes Team</button></div>
+    <div class="filters" id="heroFilterF"></div>
+    <div class="filters" id="heroFilterR"></div>
+    <div id="heroGrid"></div>
+    <div class="info">Tippe auf eine Karte: Level, Sterne und Team.</div>
+  </div>
+  </section>
 </div>
+
+<nav class="tabbar" aria-label="Bereiche">
+  <button data-go="kampagne" data-name="Kampagne"><span data-icon="gi:crossed-swords" data-size="24"></span><span class="tl">Kampagne</span></button>
+  <button data-go="abenteuer" data-name="Abenteuer"><span data-icon="gi:treasure-map" data-size="24"></span><span class="tl">Abenteuer</span></button>
+  <button data-go="stadt" data-name="Stadt"><span data-icon="gi:castle" data-size="24"></span><span class="tl">Stadt</span></button>
+  <button class="big" data-go="lernen" data-name="Lernen"><span data-icon="gi:tomato" data-size="32"></span><span class="tl">Lernen</span></button>
+  <button data-go="helden" data-name="Helden"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Helden</span></button>
+</nav>
 
 <div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
   <div class="chestbox pickbox">
