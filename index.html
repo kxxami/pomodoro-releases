@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-Br4qD1Ld.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-8JNZT-9-.css">
+  <script type="module" crossorigin src="./assets/index-D4v3x22x.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Dk-oXBKL.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -54,6 +54,11 @@
   </section>
 
   <section class="tab" data-tab="abenteuer">
+  <div class="card">
+    <div class="subjhead"><h2>Übungskampf</h2><span class="price">Neu</span></div>
+    <p class="note">Das neue Kartenspiel zum Ausprobieren: 5 Karten und ein Held, bis zu 7 Runden mit steigendem Mana, am Ende der Brawl. Alle 36 Karten sind hier frei. Es gibt noch keine Belohnungen, und deine Sammlung bleibt unberührt.</p>
+    <button class="main" id="cgOpen">Team bauen</button>
+  </div>
   <div class="card soon">
     <div class="ic" aria-hidden="true" data-icon="gi:stone-tower" data-size="32"></div>
     <div class="tx"><div class="nm">Turm</div><div class="ds">Endlos viele Etagen, jeder Versuch kostet ein Ticket. Kommt mit einem der nächsten Updates.</div></div>
@@ -239,6 +244,8 @@
   <button data-go="helden" data-name="Helden"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Helden</span></button>
   <div class="tab-slider" id="tabSlider" aria-hidden="true"><div class="tab-clone" id="tabClone"></div></div>
 </div></nav>
+
+<div class="cg" id="cgOv" lang="en" hidden role="dialog" aria-modal="true" aria-label="Übungskampf"></div>
 
 <div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
   <div class="chestbox pickbox">
