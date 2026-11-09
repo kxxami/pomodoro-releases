@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-D60-tXta.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Bt0FZlQz.css">
+  <script type="module" crossorigin src="./assets/index-BUhyaQRc.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CWPGRi-4.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -19,6 +19,11 @@
     <div class="tx"><b id="updTitle">Update bereit</b><span id="updMsg"></span></div>
     <button class="main" id="updBtn">Installieren</button>
     <button id="updLater" aria-label="Später">Später</button>
+  </div>
+
+  <div class="update penalty" id="penalty" hidden>
+    <div class="tx"><b id="penaltyTitle"></b><span id="penaltyMsg"></span></div>
+    <button id="penaltyOk">Verstanden</button>
   </div>
 
   <div class="stats">
@@ -35,13 +40,14 @@
     </div>
     <div class="stat">
       <div class="lvl" id="lvl">1</div>
-      <div style="flex:1;min-width:0"><div class="lbl" id="lvlLbl">Level 1</div><div class="xpbar"><i id="xp"></i></div></div>
+      <div style="flex:1;min-width:0"><div class="wtitle" id="title" hidden></div><div class="lbl" id="lvlLbl">Level 1</div><div class="xpbar"><i id="xp"></i></div></div>
     </div>
   </div>
 
   <div class="card timer">
     <div class="ring">
       <svg viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop id="gradA" offset="0"/><stop id="gradB" offset="1"/></linearGradient></defs>
         <circle class="track" cx="60" cy="60" r="54" fill="none" stroke-width="7"/>
         <circle class="prog" id="prog" cx="60" cy="60" r="54" fill="none" stroke-width="7" stroke-linecap="round"/>
       </svg>
@@ -68,6 +74,14 @@
     </div>
   </div>
 
+  <div class="card chest-card" id="chestCard">
+    <div class="chest-row">
+      <div class="ic" style="background:var(--gold)" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 11V8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3M3 11h18v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM10 11v3h4v-3"/></svg></div>
+      <div class="tx"><div class="nm" id="chestCount">Keine Truhe bereit</div><div class="ds" id="chestHint"></div></div>
+      <button class="main" id="chestOpen" disabled>Öffnen</button>
+    </div>
+  </div>
+
   <div class="card" id="subjCard" hidden>
     <div class="subjhead"><h2>Fächer</h2><button class="link" id="subjReload">Aus YPT laden</button></div>
     <div class="subjects" id="subjects"></div>
@@ -84,6 +98,15 @@
     <div class="gridwrap"><div class="grid" id="grid"></div></div>
     <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
     <div class="info" id="info">Tippe auf einen Tag für Details.</div>
+  </div>
+
+  <div class="card">
+    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
+    <div class="coll-tabs">
+      <button data-coll="timer">Timer</button><button data-coll="flame">Flammen</button><button data-coll="title">Titel</button>
+    </div>
+    <div class="coll" id="coll"></div>
+    <div class="info">Tippe auf ein Stück, um es anzulegen oder abzulegen.</div>
   </div>
 
   <div class="card">
@@ -129,6 +152,24 @@
 
   <div class="sync" id="sync">Speichert auf diesem Gerät</div>
   <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
+</div>
+
+<div class="overlay" id="chestOv" hidden role="dialog" aria-modal="true" aria-labelledby="chestTitle">
+  <div class="chestbox" id="chestBox" data-state="ready">
+    <svg class="chest-svg" viewBox="0 0 64 56" aria-hidden="true">
+      <rect x="6" y="24" width="52" height="28" rx="4" fill="var(--gold)"/>
+      <path class="lid" d="M6 24v-6a12 12 0 0 1 12-12h28a12 12 0 0 1 12 12v6z" fill="var(--gold)" stroke="var(--panel)" stroke-width="2"/>
+      <rect x="26" y="20" width="12" height="14" rx="2" fill="var(--fg)"/>
+    </svg>
+    <div class="chest-prev" id="chestPreview"></div>
+    <h3 id="chestTitle" aria-live="polite">Truhe</h3>
+    <p id="chestDetail" aria-live="polite"></p>
+    <div class="ctrl">
+      <button class="main" id="chestNext">Öffnen</button>
+      <button id="chestEquip" hidden>Anlegen</button>
+      <button id="chestClose">Schließen</button>
+    </div>
+  </div>
 </div>
 </body>
 </html>
