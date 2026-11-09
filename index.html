@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-eDvjDeHw.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DVwcZ0CA.css">
+  <script type="module" crossorigin src="./assets/index-Br4qD1Ld.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-8JNZT-9-.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -21,7 +21,7 @@
     <span class="wallet-top" id="wallet"></span>
   </div>
 </header>
-<div class="wrap">
+<div class="banners">
   <div class="update" id="update" hidden>
     <div class="tx"><b id="updTitle">Update bereit</b><span id="updMsg"></span></div>
     <button class="main" id="updBtn">Installieren</button>
@@ -32,6 +32,114 @@
     <div class="tx"><b id="penaltyTitle"></b><span id="penaltyMsg"></span></div>
     <button id="penaltyOk">Verstanden</button>
   </div>
+
+</div>
+<main class="pager" id="pager"><div class="track" id="track">
+
+  <section class="tab" data-tab="kampagne">
+  <div class="card">
+    <div class="subjhead"><h2>AFK-Kampf</h2><span class="price" id="afkStage"></span></div>
+    <div class="scene" id="afkScene"></div>
+    <p class="note afk-note" id="afkBank"></p>
+    <p class="note afk-note" id="afkRate"></p>
+    <div class="subjhead"><span class="lbl-s">Beute zum Abholen</span><span class="lbl-s" id="afkPower"></span></div>
+    <div class="wallet" id="afkLoot"></div>
+    <div class="row game-btns">
+      <button class="main" id="afkClaim">Abholen</button>
+      <button id="afkQuick"></button>
+      <button id="afkFight">Nächste Stufe kämpfen</button>
+      <button id="afkAuto">Stärkstes Team</button>
+    </div>
+  </div>
+  </section>
+
+  <section class="tab" data-tab="abenteuer">
+  <div class="card soon">
+    <div class="ic" aria-hidden="true" data-icon="gi:stone-tower" data-size="32"></div>
+    <div class="tx"><div class="nm">Turm</div><div class="ds">Endlos viele Etagen, jeder Versuch kostet ein Ticket. Kommt mit einem der nächsten Updates.</div></div>
+  </div>
+  <div class="card soon">
+    <div class="ic" aria-hidden="true" data-icon="gi:scroll-unfurled" data-size="32"></div>
+    <div class="tx"><div class="nm">Auftragstafel</div><div class="ds">Schicke Helden auf Aufträge, auch bei geschlossener App. Kommt mit einem der nächsten Updates.</div></div>
+  </div>
+  </section>
+
+  <section class="tab" data-tab="stadt">
+  <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Zur Stadt</button>
+  <div class="city" id="cityTiles">
+    <button class="tile-b" data-open="summon"><span data-icon="gi:wax-seal" data-size="40"></span><b>Beschwörung</b><span>Neue Heldenkarten</span></button>
+    <button class="tile-b" data-open="shop"><span data-icon="gi:shop" data-size="40"></span><b>Laden</b><span>Truhen, Siegel, Splitter</span></button>
+    <button class="tile-b" data-open="coll"><span data-icon="gi:book-pile" data-size="40"></span><b>Sammlung</b><span>Flammen und Titel</span></button>
+    <button class="tile-b" data-open="settings"><span data-icon="lu:settings" data-size="40"></span><b>Einstellungen</b><span>Sync und YPT</span></button>
+  </div>
+  <div data-building="summon" hidden>
+  <div class="card">
+    <h2>Beschwören</h2>
+    <p class="note" id="sumHint"></p>
+    <div class="row game-btns">
+      <button class="main" id="sumOne"><span data-icon="gi:wax-seal" data-size="18"></span> 1× beschwören</button>
+      <button class="main" id="sumTen"><span data-icon="gi:wax-seal" data-size="18"></span> 10× beschwören</button>
+    </div>
+    <p class="note odds" id="sumOdds"></p>
+  </div>
+  </div>
+  <div data-building="shop" hidden>
+  <div class="card">
+    <h2>Shop</h2>
+    <div class="shop" id="shop"></div>
+  </div>
+  </div>
+  <div data-building="coll" hidden>
+  <div class="card">
+    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
+    <div class="coll-tabs">
+      <button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
+    </div>
+    <div class="coll" id="coll"></div>
+    <div class="info" id="collInfo"></div>
+  </div>
+  </div>
+  <div data-building="settings" hidden>
+  <div class="card">
+    <h2>Sync mit GitHub</h2>
+    <div id="syncOff">
+      <p class="note">Dein Fortschritt liegt in einem privaten Gist auf deinem GitHub-Konto. So ist er auf Handy und PC gleich, und Claude kann den Timer starten. Du brauchst einmal pro Gerät einen Token, der nur Gists darf.</p>
+      <p class="note"><a id="tokenLink" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Lern-Pomodoro" target="_blank" rel="noopener">Token auf GitHub erstellen</a> (nur „gist“ ankreuzen), dann hier einfügen:</p>
+      <div class="row">
+        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub-Token">
+        <button class="main" id="connect">Verbinden</button>
+      </div>
+    </div>
+    <div id="syncOn" hidden>
+      <p class="note" id="syncInfo">Verbunden.</p>
+      <div class="row"><button id="syncNow">Jetzt synchronisieren</button><button id="disconnect">Trennen</button></div>
+    </div>
+  </div>
+
+  <div class="card" id="yptCard">
+    <h2>Mit YPT verbinden</h2>
+    <p class="note">Jede Lernphase startet auch deinen YPT-Timer für ein Fach und stoppt ihn am Ende wieder. Das läuft über YPTs Server, auf Handy und PC. Die Verbindung ist inoffiziell: YPT kann sie jederzeit ändern, und sie kann gegen YPTs Nutzungsbedingungen verstoßen.</p>
+    <div id="yptOff">
+      <p class="note">Melde dich mit deiner YPT-E-Mail an. Das Passwort geht nur an YPT und wird nicht gespeichert. Konten mit Google-, Apple- oder Kakao-Login haben hier kein Passwort.</p>
+      <div class="form">
+        <input id="yptEmail" type="email" autocomplete="username" placeholder="YPT-E-Mail" aria-label="YPT-E-Mail">
+        <input id="yptPass" type="password" autocomplete="current-password" placeholder="YPT-Passwort" aria-label="YPT-Passwort">
+        <button class="main" id="yptLogin">Bei YPT anmelden</button>
+      </div>
+    </div>
+    <div id="yptOnBox" hidden>
+      <p class="note" id="yptWho">Angemeldet.</p>
+      <p class="note">Deine Fächer stehen im Tab Lernen. Starte eins dort, dann läuft YPT für dieses Fach.</p>
+      <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
+      <p class="note" id="yptState" style="margin-top:10px"></p>
+      <div class="row"><button class="link" id="yptLogout">Abmelden</button></div>
+    </div>
+  </div>
+  <div class="sync" id="sync">Speichert auf diesem Gerät</div>
+  <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
+  <div class="sync credits">Icons: <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC), <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0)</div>
+  </div>
+  </section>
 
   <section class="tab" data-tab="lernen">
   <div class="stats">
@@ -111,112 +219,7 @@
   </div>
   </section>
 
-  <section class="tab" data-tab="kampagne" hidden>
-  <div class="card">
-    <div class="subjhead"><h2>AFK-Kampf</h2><span class="price" id="afkStage"></span></div>
-    <div class="scene" id="afkScene"></div>
-    <p class="note afk-note" id="afkBank"></p>
-    <p class="note afk-note" id="afkRate"></p>
-    <div class="subjhead"><span class="lbl-s">Beute zum Abholen</span><span class="lbl-s" id="afkPower"></span></div>
-    <div class="wallet" id="afkLoot"></div>
-    <div class="row game-btns">
-      <button class="main" id="afkClaim">Abholen</button>
-      <button id="afkQuick"></button>
-      <button id="afkFight">Nächste Stufe kämpfen</button>
-      <button id="afkAuto">Stärkstes Team</button>
-    </div>
-  </div>
-  </section>
-
-  <section class="tab" data-tab="abenteuer" hidden>
-  <div class="card soon">
-    <div class="ic" aria-hidden="true" data-icon="gi:stone-tower" data-size="32"></div>
-    <div class="tx"><div class="nm">Turm</div><div class="ds">Endlos viele Etagen, jeder Versuch kostet ein Ticket. Kommt mit einem der nächsten Updates.</div></div>
-  </div>
-  <div class="card soon">
-    <div class="ic" aria-hidden="true" data-icon="gi:scroll-unfurled" data-size="32"></div>
-    <div class="tx"><div class="nm">Auftragstafel</div><div class="ds">Schicke Helden auf Aufträge, auch bei geschlossener App. Kommt mit einem der nächsten Updates.</div></div>
-  </div>
-  </section>
-
-  <section class="tab" data-tab="stadt" hidden>
-  <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Zur Stadt</button>
-  <div class="city" id="cityTiles">
-    <button class="tile-b" data-open="summon"><span data-icon="gi:wax-seal" data-size="40"></span><b>Beschwörung</b><span>Neue Heldenkarten</span></button>
-    <button class="tile-b" data-open="shop"><span data-icon="gi:shop" data-size="40"></span><b>Laden</b><span>Truhen, Siegel, Splitter</span></button>
-    <button class="tile-b" data-open="coll"><span data-icon="gi:book-pile" data-size="40"></span><b>Sammlung</b><span>Flammen und Titel</span></button>
-    <button class="tile-b" data-open="settings"><span data-icon="lu:settings" data-size="40"></span><b>Einstellungen</b><span>Sync und YPT</span></button>
-  </div>
-  <div data-building="summon" hidden>
-  <div class="card">
-    <h2>Beschwören</h2>
-    <p class="note" id="sumHint"></p>
-    <div class="row game-btns">
-      <button class="main" id="sumOne"><span data-icon="gi:wax-seal" data-size="18"></span> 1× beschwören</button>
-      <button class="main" id="sumTen"><span data-icon="gi:wax-seal" data-size="18"></span> 10× beschwören</button>
-    </div>
-    <p class="note odds" id="sumOdds"></p>
-  </div>
-  </div>
-  <div data-building="shop" hidden>
-  <div class="card">
-    <h2>Shop</h2>
-    <div class="shop" id="shop"></div>
-  </div>
-  </div>
-  <div data-building="coll" hidden>
-  <div class="card">
-    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
-    <div class="coll-tabs">
-      <button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
-    </div>
-    <div class="coll" id="coll"></div>
-    <div class="info" id="collInfo"></div>
-  </div>
-  </div>
-  <div data-building="settings" hidden>
-  <div class="card">
-    <h2>Sync mit GitHub</h2>
-    <div id="syncOff">
-      <p class="note">Dein Fortschritt liegt in einem privaten Gist auf deinem GitHub-Konto. So ist er auf Handy und PC gleich, und Claude kann den Timer starten. Du brauchst einmal pro Gerät einen Token, der nur Gists darf.</p>
-      <p class="note"><a id="tokenLink" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Lern-Pomodoro" target="_blank" rel="noopener">Token auf GitHub erstellen</a> (nur „gist“ ankreuzen), dann hier einfügen:</p>
-      <div class="row">
-        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub-Token">
-        <button class="main" id="connect">Verbinden</button>
-      </div>
-    </div>
-    <div id="syncOn" hidden>
-      <p class="note" id="syncInfo">Verbunden.</p>
-      <div class="row"><button id="syncNow">Jetzt synchronisieren</button><button id="disconnect">Trennen</button></div>
-    </div>
-  </div>
-
-  <div class="card" id="yptCard">
-    <h2>Mit YPT verbinden</h2>
-    <p class="note">Jede Lernphase startet auch deinen YPT-Timer für ein Fach und stoppt ihn am Ende wieder. Das läuft über YPTs Server, auf Handy und PC. Die Verbindung ist inoffiziell: YPT kann sie jederzeit ändern, und sie kann gegen YPTs Nutzungsbedingungen verstoßen.</p>
-    <div id="yptOff">
-      <p class="note">Melde dich mit deiner YPT-E-Mail an. Das Passwort geht nur an YPT und wird nicht gespeichert. Konten mit Google-, Apple- oder Kakao-Login haben hier kein Passwort.</p>
-      <div class="form">
-        <input id="yptEmail" type="email" autocomplete="username" placeholder="YPT-E-Mail" aria-label="YPT-E-Mail">
-        <input id="yptPass" type="password" autocomplete="current-password" placeholder="YPT-Passwort" aria-label="YPT-Passwort">
-        <button class="main" id="yptLogin">Bei YPT anmelden</button>
-      </div>
-    </div>
-    <div id="yptOnBox" hidden>
-      <p class="note" id="yptWho">Angemeldet.</p>
-      <p class="note">Deine Fächer stehen im Tab Lernen. Starte eins dort, dann läuft YPT für dieses Fach.</p>
-      <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
-      <p class="note" id="yptState" style="margin-top:10px"></p>
-      <div class="row"><button class="link" id="yptLogout">Abmelden</button></div>
-    </div>
-  </div>
-  <div class="sync" id="sync">Speichert auf diesem Gerät</div>
-  <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
-  <div class="sync credits">Icons: <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC), <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0)</div>
-  </div>
-  </section>
-
-  <section class="tab" data-tab="helden" hidden>
+  <section class="tab" data-tab="helden">
   <div class="card">
     <div class="subjhead"><h2>Helden</h2><span class="price" id="heroCount"></span></div>
     <div class="team-row"><div class="side" id="heroTeamRow"></div><button id="heroAuto">Stärkstes Team</button></div>
@@ -226,15 +229,16 @@
     <div class="info">Tippe auf eine Karte: Level, Sterne und Team.</div>
   </div>
   </section>
-</div>
+</div></main>
 
-<nav class="tabbar" aria-label="Bereiche">
+<nav class="tabbar" aria-label="Bereiche"><div class="tabbar-in">
   <button data-go="kampagne" data-name="Kampagne"><span data-icon="gi:crossed-swords" data-size="24"></span><span class="tl">Kampagne</span></button>
   <button data-go="abenteuer" data-name="Abenteuer"><span data-icon="gi:treasure-map" data-size="24"></span><span class="tl">Abenteuer</span></button>
   <button data-go="stadt" data-name="Stadt"><span data-icon="gi:castle" data-size="24"></span><span class="tl">Stadt</span></button>
-  <button class="big" data-go="lernen" data-name="Lernen"><span data-icon="gi:tomato" data-size="32"></span><span class="tl">Lernen</span></button>
+  <button data-go="lernen" data-name="Lernen"><span data-icon="gi:tomato" data-size="24"></span><span class="tl">Lernen</span></button>
   <button data-go="helden" data-name="Helden"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Helden</span></button>
-</nav>
+  <div class="tab-slider" id="tabSlider" aria-hidden="true"><div class="tab-clone" id="tabClone"></div></div>
+</div></nav>
 
 <div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
   <div class="chestbox pickbox">
