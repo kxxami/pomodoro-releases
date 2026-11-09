@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-BUhyaQRc.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CWPGRi-4.css">
+  <script type="module" crossorigin src="./assets/index-DMrgId8V.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-qSVJu0QS.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -35,7 +35,7 @@
       <div style="min-width:0"><div class="big" id="streak">0</div><div class="lbl" id="streakLbl">Tage Streak</div></div>
     </div>
     <div class="stat" id="stPoints">
-      <div class="coin" aria-hidden="true">P</div>
+      <div class="coin" aria-hidden="true" data-icon="gi:two-coins" data-size="20"></div>
       <div><div class="big" id="points">0</div><div class="lbl">Punkte</div></div>
     </div>
     <div class="stat">
@@ -76,7 +76,7 @@
 
   <div class="card chest-card" id="chestCard">
     <div class="chest-row">
-      <div class="ic" style="background:var(--gold)" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 11V8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3M3 11h18v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM10 11v3h4v-3"/></svg></div>
+      <div class="ic" style="background:var(--gold);color:#fff" aria-hidden="true" data-icon="gi:locked-chest" data-size="28"></div>
       <div class="tx"><div class="nm" id="chestCount">Keine Truhe bereit</div><div class="ds" id="chestHint"></div></div>
       <button class="main" id="chestOpen" disabled>Öffnen</button>
     </div>
@@ -152,21 +152,28 @@
 
   <div class="sync" id="sync">Speichert auf diesem Gerät</div>
   <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
+  <div class="sync credits">Icons: <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC), <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0)</div>
+</div>
+
+<div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
+  <div class="chestbox pickbox">
+    <h3 id="pickTitle">Was lernst du?</h3>
+    <div class="pick-list" id="pickList"></div>
+    <div class="ctrl"><button id="pickNone">Ohne Fach</button><button id="pickClose">Abbrechen</button></div>
+  </div>
 </div>
 
 <div class="overlay" id="chestOv" hidden role="dialog" aria-modal="true" aria-labelledby="chestTitle">
   <div class="chestbox" id="chestBox" data-state="ready">
-    <svg class="chest-svg" viewBox="0 0 64 56" aria-hidden="true">
-      <rect x="6" y="24" width="52" height="28" rx="4" fill="var(--gold)"/>
-      <path class="lid" d="M6 24v-6a12 12 0 0 1 12-12h28a12 12 0 0 1 12 12v6z" fill="var(--gold)" stroke="var(--panel)" stroke-width="2"/>
-      <rect x="26" y="20" width="12" height="14" rx="2" fill="var(--fg)"/>
-    </svg>
+    <div class="chest-big" data-icon="gi:locked-chest" data-size="110"></div>
+    <div class="reel" id="reel"><div class="reel-mark"></div><div class="reel-track" id="reelTrack"></div></div>
     <div class="chest-prev" id="chestPreview"></div>
     <h3 id="chestTitle" aria-live="polite">Truhe</h3>
     <p id="chestDetail" aria-live="polite"></p>
     <div class="ctrl">
       <button class="main" id="chestNext">Öffnen</button>
       <button id="chestEquip" hidden>Anlegen</button>
+      <button class="link" id="chestAnim" hidden>Animation einschalten</button>
       <button id="chestClose">Schließen</button>
     </div>
   </div>
