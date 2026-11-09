@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-DMrgId8V.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-qSVJu0QS.css">
+  <script type="module" crossorigin src="./assets/index-CFaMiUZC.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BEU-zH7p.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -101,12 +101,37 @@
   </div>
 
   <div class="card">
+    <div class="subjhead"><h2>AFK-Kampf</h2><span class="price" id="afkStage"></span></div>
+    <div class="wallet" id="wallet"></div>
+    <div class="scene" id="afkScene"></div>
+    <p class="note afk-note" id="afkBank"></p>
+    <p class="note afk-note" id="afkRate"></p>
+    <div class="subjhead"><span class="lbl-s">Beute zum Abholen</span><span class="lbl-s" id="afkPower"></span></div>
+    <div class="wallet" id="afkLoot"></div>
+    <div class="row game-btns">
+      <button class="main" id="afkClaim">Abholen</button>
+      <button id="afkFight">Nächste Stufe kämpfen</button>
+      <button id="afkAuto">Stärkstes Team</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Beschwören</h2>
+    <p class="note" id="sumHint"></p>
+    <div class="row game-btns">
+      <button class="main" id="sumOne"><span data-icon="gi:wax-seal" data-size="18"></span> 1× beschwören</button>
+      <button class="main" id="sumTen"><span data-icon="gi:wax-seal" data-size="18"></span> 10× beschwören</button>
+    </div>
+    <p class="note odds" id="sumOdds"></p>
+  </div>
+
+  <div class="card">
     <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
     <div class="coll-tabs">
-      <button data-coll="timer">Timer</button><button data-coll="flame">Flammen</button><button data-coll="title">Titel</button>
+      <button data-coll="hero">Karten</button><button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
     </div>
     <div class="coll" id="coll"></div>
-    <div class="info">Tippe auf ein Stück, um es anzulegen oder abzulegen.</div>
+    <div class="info" id="collInfo"></div>
   </div>
 
   <div class="card">
@@ -160,6 +185,43 @@
     <h3 id="pickTitle">Was lernst du?</h3>
     <div class="pick-list" id="pickList"></div>
     <div class="ctrl"><button id="pickNone">Ohne Fach</button><button id="pickClose">Abbrechen</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="sumOv" hidden role="dialog" aria-modal="true" aria-label="Beschwörung">
+  <div class="chestbox sumbox">
+    <div class="sum-cards" id="sumCards"></div>
+    <div class="ctrl"><button id="sumAll">Alle zeigen</button><button class="main" id="sumDone" hidden>Fertig</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="heroOv" hidden role="dialog" aria-modal="true" aria-labelledby="heroTitle">
+  <div class="chestbox herobox">
+    <div class="hero-card" id="heroCardBox"></div>
+    <h3 id="heroTitle"></h3>
+    <p class="note" id="heroMeta"></p>
+    <div class="hero-stats" id="heroStats"></div>
+    <div class="hero-btns">
+      <button class="main" id="heroLevel"></button>
+      <button id="heroStar"></button>
+      <button id="heroTeam"></button>
+      <button id="heroClose">Schließen</button>
+    </div>
+    <p class="note" id="heroNote"></p>
+  </div>
+</div>
+
+<div class="overlay" id="batOv" hidden role="dialog" aria-modal="true" aria-labelledby="batTitle">
+  <div class="chestbox batbox">
+    <h3 id="batTitle"></h3>
+    <div class="bat-row" id="batFoes"></div>
+    <div class="bat-row" id="batTeam"></div>
+    <p id="batResult" aria-live="polite"></p>
+    <div class="ctrl">
+      <button id="batSkip">Überspringen</button>
+      <button class="main" id="batAgain" hidden>Nächste Stufe</button>
+      <button id="batClose" hidden>Schließen</button>
+    </div>
   </div>
 </div>
 
