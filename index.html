@@ -9,7 +9,7 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-D_w90zvI.js"></script>
+  <script type="module" crossorigin src="./assets/index-CjvmwYuF.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-mu6iJSMT.css">
 </head>
 <body>
@@ -196,6 +196,19 @@
     </div>
   </div>
 
+  <div class="card today">
+    <div class="todayrow"><span>Heute gelernt</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
+    <div class="bar"><i id="todayBar"></i></div>
+    <div class="sub" id="todayMsg">Schaff dein Tagesziel, damit die Flamme weiterbrennt.</div>
+  </div>
+
+  <div class="card">
+    <h2>Deine Lerntage</h2>
+    <div class="gridwrap"><div class="grid" id="grid"></div></div>
+    <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
+    <div class="info" id="info">Tippe auf einen Tag für Details.</div>
+  </div>
+
   <div class="card chest-card" id="chestCard">
     <div class="chest-row">
       <div class="ic" style="background:var(--gold);color:#fff" aria-hidden="true" data-icon="gi:locked-chest" data-size="28"></div>
@@ -215,18 +228,6 @@
     <div class="subjects" id="subjects"></div>
   </div>
 
-  <div class="card today">
-    <div class="todayrow"><span>Heute gelernt</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
-    <div class="bar"><i id="todayBar"></i></div>
-    <div class="sub" id="todayMsg">Schaff dein Tagesziel, damit die Flamme weiterbrennt.</div>
-  </div>
-
-  <div class="card">
-    <h2>Deine Lerntage</h2>
-    <div class="gridwrap"><div class="grid" id="grid"></div></div>
-    <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
-    <div class="info" id="info">Tippe auf einen Tag für Details.</div>
-  </div>
   </section>
 
   <section class="tab pq" data-tab="helden">
