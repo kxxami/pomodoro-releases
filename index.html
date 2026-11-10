@@ -9,15 +9,15 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-CjvmwYuF.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-mu6iJSMT.css">
+  <script type="module" crossorigin src="./assets/index-DzePaouQ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BVr48W3g.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
 <header class="topbar">
   <div class="topbar-in">
     <span class="lvl lvl-top" id="lvlTop" aria-label="Level">1</span>
-    <span class="chip" id="stPoints" title="Punkte"><span data-icon="gi:two-coins" data-size="18"></span><b id="points">0</b><span class="sr">Punkte</span></span>
+    <span class="chip" id="stPoints" title="Punkte" data-cur="Punkte" role="button" tabindex="0"><span data-icon="gi:two-coins" data-size="18"></span><b id="points">0</b><span class="sr">Punkte</span></span>
     <span class="wallet-top" id="wallet"></span>
   </div>
 </header>
@@ -167,32 +167,37 @@
   </div>
 
   <div class="card timer">
-    <div class="ring">
-      <svg viewBox="0 0 120 120" aria-hidden="true">
-        <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop id="gradA" offset="0"/><stop id="gradB" offset="1"/></linearGradient></defs>
-        <circle class="track" cx="60" cy="60" r="54" fill="none" stroke-width="7"/>
-        <circle class="prog" id="prog" cx="60" cy="60" r="54" fill="none" stroke-width="7" stroke-linecap="round"/>
-      </svg>
-      <button class="center" id="center" aria-label="Zeiten einstellen">
+    <!-- the spell book (design B, 2026-11-10): left page time and subject, right page the phase's progress and what it brings -->
+    <div class="book" id="book">
+      <button class="pg pg-l" id="center" aria-label="Set the times">
+        <span class="pg-k" id="phaseK">Study phase</span>
         <span class="time" id="time">50:00</span>
-        <span class="sub" id="sub">Bereit</span>
-        <span class="boost" id="boostTag" hidden>2× Booster aktiv</span>
-        <span class="edit-hint" id="editHint">Tippen zum Einstellen</span>
+        <span class="sub" id="sub">Ready</span>
+        <span class="pg-subj" id="subj" hidden></span>
+        <span class="edit-hint" id="editHint">Tap to set the times</span>
       </button>
+      <div class="pg pg-r">
+        <span class="pg-k">This phase</span>
+        <div class="pbar" aria-hidden="true"><i id="prog"></i></div>
+        <span class="pg-min" id="progTxt"></span>
+        <ul class="pg-gain" id="gain"></ul>
+        <span class="boost" id="boostTag" hidden>2× booster active</span>
+        <span class="boost flow" id="flowTag" hidden></span>
+      </div>
     </div>
     <div class="settings" id="settings" hidden>
-      <label for="setWork">Lernen (min)<input id="setWork" type="number" min="1" max="180" inputmode="numeric"></label>
-      <label for="setBrk">Pause (min)<input id="setBrk" type="number" min="1" max="60" inputmode="numeric"></label>
-      <label for="setGoal">Tagesziel (min)<input id="setGoal" type="number" min="5" max="600" inputmode="numeric"></label>
+      <label for="setWork">Study (min)<input id="setWork" type="number" min="1" max="180" inputmode="numeric"></label>
+      <label for="setBrk">Break (min)<input id="setBrk" type="number" min="1" max="60" inputmode="numeric"></label>
+      <label for="setGoal">Daily goal (min)<input id="setGoal" type="number" min="5" max="600" inputmode="numeric"></label>
     </div>
     <div class="ctrl" id="ctrlMain">
       <button class="main" id="toggle">Start</button>
-      <button id="skip">Überspringen</button>
-      <button id="reset">Zurücksetzen</button>
+      <button id="skip">Skip</button>
+      <button id="reset">Reset</button>
     </div>
     <div class="ctrl" id="ctrlSet" hidden>
-      <button class="main" id="saveSet">Speichern</button>
-      <button id="cancelSet">Abbrechen</button>
+      <button class="main" id="saveSet">Save</button>
+      <button id="cancelSet">Cancel</button>
     </div>
   </div>
 
@@ -247,7 +252,7 @@
   <button data-go="kampagne" data-name="Kampagne"><span data-icon="gi:crossed-swords" data-size="24"></span><span class="tl">Kampagne</span></button>
   <button data-go="abenteuer" data-name="Abenteuer"><span data-icon="gi:treasure-map" data-size="24"></span><span class="tl">Abenteuer</span></button>
   <button data-go="stadt" data-name="Stadt"><span data-icon="gi:castle" data-size="24"></span><span class="tl">Stadt</span></button>
-  <button data-go="lernen" data-name="Lernen"><span data-icon="gi:tomato" data-size="24"></span><span class="tl">Lernen</span></button>
+  <button data-go="lernen" data-name="Lernen"><span data-icon="gi:spell-book" data-size="24"></span><span class="tl">Lernen</span></button>
   <button data-go="helden" data-name="Helden"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Helden</span></button>
   <div class="tab-slider" id="tabSlider" aria-hidden="true"><div class="tab-clone" id="tabClone"></div></div>
 </div></nav>
@@ -270,18 +275,18 @@
 </div>
 
 <div class="overlay pq pq-sheet" id="heroOv" hidden role="dialog" aria-modal="true" aria-labelledby="heroTitle">
-  <div class="pq-sheet-in">
-    <div class="cg-pv-card" id="heroCardBox"></div>
-    <h3 id="heroTitle"></h3>
-    <p class="pq-sub" id="heroMeta"></p>
-    <div class="pq-btns col">
-      <button class="pq-btn main" id="heroLevel"></button>
-      <button class="pq-btn" id="heroStar"></button>
-      <button class="pq-btn" id="heroTeam"></button>
+  <div class="pq-sheet-in bsv">
+    <button class="bsv-x" id="heroClose" aria-label="Close"><span data-icon="lu:x" data-size="20"></span></button>
+    <h3 class="sr" id="heroTitle"></h3>
+    <div class="bsv-page" id="heroCardBox"></div>
+    <div class="bsv-act">
+      <div class="pq-btns col">
+        <button class="pq-btn main" id="heroLevel"></button>
+        <button class="pq-btn" id="heroStar"></button>
+        <button class="pq-btn" id="heroTeam"></button>
+      </div>
+      <p class="pq-note" id="heroNote"></p>
     </div>
-    <p class="pq-note" id="heroNote"></p>
-    <div class="hero-info" id="heroInfo"></div>
-    <button class="pq-btn ghost wide" id="heroClose">Schließen</button>
   </div>
 </div>
 
