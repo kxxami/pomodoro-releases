@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-D4v3x22x.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Dk-oXBKL.css">
+  <script type="module" crossorigin src="./assets/index-D_w90zvI.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-mu6iJSMT.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -36,46 +36,51 @@
 </div>
 <main class="pager" id="pager"><div class="track" id="track">
 
-  <section class="tab" data-tab="kampagne">
-  <div class="card">
-    <div class="subjhead"><h2>AFK-Kampf</h2><span class="price" id="afkStage"></span></div>
-    <div class="scene" id="afkScene"></div>
-    <p class="note afk-note" id="afkBank"></p>
-    <p class="note afk-note" id="afkRate"></p>
-    <div class="subjhead"><span class="lbl-s">Beute zum Abholen</span><span class="lbl-s" id="afkPower"></span></div>
-    <div class="wallet" id="afkLoot"></div>
-    <div class="row game-btns">
-      <button class="main" id="afkClaim">Abholen</button>
-      <button id="afkQuick"></button>
-      <button id="afkFight">Nächste Stufe kämpfen</button>
-      <button id="afkAuto">Stärkstes Team</button>
-    </div>
+  <section class="tab pq" data-tab="kampagne">
+  <div class="pq-title"><div><h2 id="kmChapter">Kampagne</h2><span class="pq-sub" id="kmStage"></span></div><span class="pq-chip" id="kmPower"></span></div>
+  <div class="km-map" id="kmMap"></div>
+  <button class="pq-btn main wide" id="kmFight">Kämpfen</button>
+  <div class="pq-pan">
+    <div class="pq-row"><h3>AFK-Beute</h3><span class="pq-sub" id="afkRate"></span></div>
+    <p class="pq-note" id="afkBank"></p>
+    <div class="pq-loot" id="afkLoot"></div>
+    <div class="pq-btns"><button class="pq-btn main" id="afkClaim">Abholen</button><button class="pq-btn" id="afkQuick"></button></div>
   </div>
   </section>
 
-  <section class="tab" data-tab="abenteuer">
-  <div class="card">
-    <div class="subjhead"><h2>Übungskampf</h2><span class="price">Neu</span></div>
-    <p class="note">Das neue Kartenspiel zum Ausprobieren: 5 Karten und ein Held, bis zu 7 Runden mit steigendem Mana, am Ende der Brawl. Alle 36 Karten sind hier frei. Es gibt noch keine Belohnungen, und deine Sammlung bleibt unberührt.</p>
-    <button class="main" id="cgOpen">Team bauen</button>
+  <section class="tab pq" data-tab="abenteuer">
+  <div class="pq-title"><div><h2>Abenteuer</h2><span class="pq-sub">Spielmodi neben der Kampagne</span></div></div>
+  <div class="pq-mode">
+    <span class="pq-mode-ic" data-icon="gi:crossed-swords" data-size="34"></span>
+    <div class="pq-mode-tx"><h3>Übungskampf</h3><p>Alle 36 Karten und 6 Helden sind frei. Probiere Teams aus, ohne Belohnung und ohne Risiko.</p></div>
+    <button class="pq-btn main" id="cgOpen">Team bauen</button>
   </div>
-  <div class="card soon">
-    <div class="ic" aria-hidden="true" data-icon="gi:stone-tower" data-size="32"></div>
-    <div class="tx"><div class="nm">Turm</div><div class="ds">Endlos viele Etagen, jeder Versuch kostet ein Ticket. Kommt mit einem der nächsten Updates.</div></div>
+  <div class="pq-mode soon">
+    <span class="pq-mode-ic" data-icon="gi:stone-tower" data-size="34"></span>
+    <div class="pq-mode-tx"><h3>Turm</h3><p>Endlos viele Etagen, jeder Versuch kostet ein Ticket.</p></div>
+    <span class="pq-soon">Bald</span>
   </div>
-  <div class="card soon">
-    <div class="ic" aria-hidden="true" data-icon="gi:scroll-unfurled" data-size="32"></div>
-    <div class="tx"><div class="nm">Auftragstafel</div><div class="ds">Schicke Helden auf Aufträge, auch bei geschlossener App. Kommt mit einem der nächsten Updates.</div></div>
+  <div class="pq-mode soon">
+    <span class="pq-mode-ic" data-icon="gi:scroll-unfurled" data-size="34"></span>
+    <div class="pq-mode-tx"><h3>Auftragstafel</h3><p>Schicke Karten auf Aufträge, auch bei geschlossener App.</p></div>
+    <span class="pq-soon">Bald</span>
   </div>
   </section>
 
-  <section class="tab" data-tab="stadt">
+  <section class="tab pq" data-tab="stadt">
   <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Zur Stadt</button>
-  <div class="city" id="cityTiles">
-    <button class="tile-b" data-open="summon"><span data-icon="gi:wax-seal" data-size="40"></span><b>Beschwörung</b><span>Neue Heldenkarten</span></button>
-    <button class="tile-b" data-open="shop"><span data-icon="gi:shop" data-size="40"></span><b>Laden</b><span>Truhen, Siegel, Splitter</span></button>
-    <button class="tile-b" data-open="coll"><span data-icon="gi:book-pile" data-size="40"></span><b>Sammlung</b><span>Flammen und Titel</span></button>
-    <button class="tile-b" data-open="settings"><span data-icon="lu:settings" data-size="40"></span><b>Einstellungen</b><span>Sync und YPT</span></button>
+  <div class="town" id="cityTiles">
+    <div class="town-name"><h2>Ranhall</h2><span class="pq-sub">Tippe auf ein Gebäude</span></div>
+    <svg class="town-ground" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-5 30 C20 22 35 40 60 30 S95 18 110 26" stroke="#9fb6c4" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M50 145 L50 92 C50 78 30 74 28 60 M50 92 C52 80 74 76 74 62 M50 92 L50 118 M28 60 C26 50 40 44 50 44 C60 44 74 50 74 62" stroke="#d9c9a4" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="92" r="7" fill="#d9c9a4"/>
+      <g fill="#b9c69a"><circle cx="8" cy="50" r="5"/><circle cx="14" cy="56" r="4"/><circle cx="92" cy="48" r="5"/><circle cx="88" cy="56" r="3.5"/><circle cx="10" cy="125" r="5"/><circle cx="92" cy="128" r="5"/><circle cx="86" cy="122" r="3.5"/></g>
+    </svg>
+    <button class="bld" data-open="summon" style="left:28%;top:43%"><span class="bld-ic" data-icon="gi:beer-stein" data-size="30"></span><b>Taverne</b><span>Beschwören</span></button>
+    <button class="bld" data-open="shop" style="left:74%;top:44%"><span class="bld-ic" data-icon="gi:shop" data-size="30"></span><b>Markt</b><span>Truhen, Siegel</span></button>
+    <button class="bld" data-open="coll" style="left:50%;top:24%"><span class="bld-ic" data-icon="gi:locked-chest" data-size="30"></span><b>Schatzkammer</b><span>Flammen, Titel</span></button>
+    <button class="bld" data-open="settings" style="left:50%;top:80%"><span class="bld-ic" data-icon="gi:castle" data-size="30"></span><b>Rathaus</b><span>Sync, YPT</span></button>
   </div>
   <div data-building="summon" hidden>
   <div class="card">
@@ -224,15 +229,16 @@
   </div>
   </section>
 
-  <section class="tab" data-tab="helden">
-  <div class="card">
-    <div class="subjhead"><h2>Helden</h2><span class="price" id="heroCount"></span></div>
-    <div class="team-row"><div class="side" id="heroTeamRow"></div><button id="heroAuto">Stärkstes Team</button></div>
-    <div class="filters" id="heroFilterF"></div>
-    <div class="filters" id="heroFilterR"></div>
-    <div id="heroGrid"></div>
-    <div class="info">Tippe auf eine Karte: Level, Sterne und Team.</div>
+  <section class="tab pq" data-tab="helden">
+  <div class="pq-title"><div><h2>Helden</h2><span class="pq-sub" id="heroCount"></span></div><button class="pq-btn" id="heroAuto">Stärkstes Team</button></div>
+  <div class="pq-pan">
+    <h3>Dein Team</h3>
+    <div class="hd-team" id="heroTeamRow"></div>
+    <div class="cg-tiers" id="heroTiers"></div>
   </div>
+  <div class="pq-chips" id="heroFilterF"></div>
+  <div class="pq-chips" id="heroFilterR"></div>
+  <div class="cg-pool hd-grid" id="heroGrid"></div>
   </section>
 </div></main>
 
@@ -255,40 +261,34 @@
   </div>
 </div>
 
-<div class="overlay" id="sumOv" hidden role="dialog" aria-modal="true" aria-label="Beschwörung">
-  <div class="chestbox sumbox">
+<div class="overlay pq pq-sheet" id="sumOv" hidden role="dialog" aria-modal="true" aria-label="Beschwörung">
+  <div class="pq-sheet-in sumbox">
     <div class="sum-cards" id="sumCards"></div>
-    <div class="ctrl"><button id="sumAll">Alle zeigen</button><button class="main" id="sumDone" hidden>Fertig</button></div>
+    <div class="pq-btns"><button class="pq-btn" id="sumAll">Alle zeigen</button><button class="pq-btn main" id="sumDone" hidden>Fertig</button></div>
   </div>
 </div>
 
-<div class="overlay" id="heroOv" hidden role="dialog" aria-modal="true" aria-labelledby="heroTitle">
-  <div class="chestbox herobox">
-    <div class="hero-card" id="heroCardBox"></div>
+<div class="overlay pq pq-sheet" id="heroOv" hidden role="dialog" aria-modal="true" aria-labelledby="heroTitle">
+  <div class="pq-sheet-in">
+    <div class="cg-pv-card" id="heroCardBox"></div>
     <h3 id="heroTitle"></h3>
-    <p class="note" id="heroMeta"></p>
-    <div class="hero-stats" id="heroStats"></div>
-    <div class="hero-btns">
-      <button class="main" id="heroLevel"></button>
-      <button id="heroStar"></button>
-      <button id="heroTeam"></button>
-      <button id="heroClose">Schließen</button>
+    <p class="pq-sub" id="heroMeta"></p>
+    <div class="pq-btns col">
+      <button class="pq-btn main" id="heroLevel"></button>
+      <button class="pq-btn" id="heroStar"></button>
+      <button class="pq-btn" id="heroTeam"></button>
     </div>
-    <p class="note" id="heroNote"></p>
+    <p class="pq-note" id="heroNote"></p>
+    <div class="hero-info" id="heroInfo"></div>
+    <button class="pq-btn ghost wide" id="heroClose">Schließen</button>
   </div>
 </div>
 
-<div class="overlay" id="batOv" hidden role="dialog" aria-modal="true" aria-labelledby="batTitle">
-  <div class="chestbox batbox">
-    <h3 id="batTitle"></h3>
-    <div class="bat-row" id="batFoes"></div>
-    <div class="bat-row" id="batTeam"></div>
-    <p id="batResult" aria-live="polite"></p>
-    <div class="ctrl">
-      <button id="batSkip">Überspringen</button>
-      <button class="main" id="batAgain" hidden>Nächste Stufe</button>
-      <button id="batClose" hidden>Schließen</button>
-    </div>
+<div class="overlay pq pq-sheet" id="startOv" hidden role="dialog" aria-modal="true" aria-labelledby="startTitle">
+  <div class="pq-sheet-in">
+    <h3 id="startTitle">Wähle deine Start-Faction</h3>
+    <p class="pq-note" id="startNote"></p>
+    <div class="start-list" id="startList"></div>
   </div>
 </div>
 
