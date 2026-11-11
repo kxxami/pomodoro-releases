@@ -1,94 +1,94 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#161312">
-<meta name="description" content="Lern-Timer mit Streak, Punkten und Shop">
+<meta name="description" content="Study timer with a streak, points and a card game">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-DzePaouQ.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BVr48W3g.css">
+  <script type="module" crossorigin src="./assets/index-DUoHMug_.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BJHjzIE1.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
 <header class="topbar">
   <div class="topbar-in">
     <span class="lvl lvl-top" id="lvlTop" aria-label="Level">1</span>
-    <span class="chip" id="stPoints" title="Punkte" data-cur="Punkte" role="button" tabindex="0"><span data-icon="gi:two-coins" data-size="18"></span><b id="points">0</b><span class="sr">Punkte</span></span>
+    <span class="chip" id="stPoints" title="Points" data-cur="Points" role="button" tabindex="0"><span data-icon="gi:two-coins" data-size="18"></span><b id="points">0</b><span class="sr">Points</span></span>
     <span class="wallet-top" id="wallet"></span>
   </div>
 </header>
 <div class="banners">
   <div class="update" id="update" hidden>
-    <div class="tx"><b id="updTitle">Update bereit</b><span id="updMsg"></span></div>
-    <button class="main" id="updBtn">Installieren</button>
-    <button id="updLater" aria-label="Später">Später</button>
+    <div class="tx"><b id="updTitle">Update ready</b><span id="updMsg"></span></div>
+    <button class="main" id="updBtn">Install</button>
+    <button id="updLater" aria-label="Later">Later</button>
   </div>
 
   <div class="update penalty" id="penalty" hidden>
     <div class="tx"><b id="penaltyTitle"></b><span id="penaltyMsg"></span></div>
-    <button id="penaltyOk">Verstanden</button>
+    <button id="penaltyOk">Got it</button>
   </div>
 
 </div>
 <main class="pager" id="pager"><div class="track" id="track">
 
   <section class="tab pq" data-tab="kampagne">
-  <div class="pq-title"><div><h2 id="kmChapter">Kampagne</h2><span class="pq-sub" id="kmStage"></span></div><span class="pq-chip" id="kmPower"></span></div>
+  <div class="pq-title"><div><h2 id="kmChapter">Campaign</h2><span class="pq-sub" id="kmStage"></span></div><span class="pq-chip" id="kmPower"></span></div>
   <div class="km-map" id="kmMap"></div>
-  <button class="pq-btn main wide" id="kmFight">Kämpfen</button>
+  <button class="pq-btn main wide" id="kmFight">Fight</button>
   <div class="pq-pan">
-    <div class="pq-row"><h3>AFK-Beute</h3><span class="pq-sub" id="afkRate"></span></div>
+    <div class="pq-row"><h3>AFK loot</h3><span class="pq-sub" id="afkRate"></span></div>
     <p class="pq-note" id="afkBank"></p>
     <div class="pq-loot" id="afkLoot"></div>
-    <div class="pq-btns"><button class="pq-btn main" id="afkClaim">Abholen</button><button class="pq-btn" id="afkQuick"></button></div>
+    <div class="pq-btns"><button class="pq-btn main" id="afkClaim">Collect</button><button class="pq-btn" id="afkQuick"></button></div>
   </div>
   </section>
 
   <section class="tab pq" data-tab="abenteuer">
-  <div class="pq-title"><div><h2>Abenteuer</h2><span class="pq-sub">Spielmodi neben der Kampagne</span></div></div>
+  <div class="pq-title"><div><h2>Adventure</h2><span class="pq-sub">Game modes beside the campaign</span></div></div>
   <div class="pq-mode">
     <span class="pq-mode-ic" data-icon="gi:crossed-swords" data-size="34"></span>
-    <div class="pq-mode-tx"><h3>Übungskampf</h3><p>Alle 36 Karten und 6 Helden sind frei. Probiere Teams aus, ohne Belohnung und ohne Risiko.</p></div>
-    <button class="pq-btn main" id="cgOpen">Team bauen</button>
+    <div class="pq-mode-tx"><h3>Practice fight</h3><p>All 36 cards and 6 heroes are free. Try out teams, without rewards and without risk.</p></div>
+    <button class="pq-btn main" id="cgOpen">Build a team</button>
   </div>
   <div class="pq-mode soon">
     <span class="pq-mode-ic" data-icon="gi:stone-tower" data-size="34"></span>
-    <div class="pq-mode-tx"><h3>Turm</h3><p>Endlos viele Etagen, jeder Versuch kostet ein Ticket.</p></div>
-    <span class="pq-soon">Bald</span>
+    <div class="pq-mode-tx"><h3>Tower</h3><p>Endless floors; every attempt costs 1 ticket.</p></div>
+    <span class="pq-soon">Soon</span>
   </div>
   <div class="pq-mode soon">
     <span class="pq-mode-ic" data-icon="gi:scroll-unfurled" data-size="34"></span>
-    <div class="pq-mode-tx"><h3>Auftragstafel</h3><p>Schicke Karten auf Aufträge, auch bei geschlossener App.</p></div>
-    <span class="pq-soon">Bald</span>
+    <div class="pq-mode-tx"><h3>Quest board</h3><p>Send cards on errands, even while the app is closed.</p></div>
+    <span class="pq-soon">Soon</span>
   </div>
   </section>
 
   <section class="tab pq" data-tab="stadt">
-  <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Zur Stadt</button>
+  <button class="link city-back" id="cityBack" hidden><span data-icon="lu:arrow-left" data-size="16"></span> Back to town</button>
   <div class="town" id="cityTiles">
-    <div class="town-name"><h2>Ranhall</h2><span class="pq-sub">Tippe auf ein Gebäude</span></div>
+    <div class="town-name"><h2>Ranhall</h2><span class="pq-sub">Tap a building</span></div>
     <svg class="town-ground" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
       <path d="M-5 30 C20 22 35 40 60 30 S95 18 110 26" stroke="#9fb6c4" stroke-width="7" fill="none" stroke-linecap="round"/>
       <path d="M50 145 L50 92 C50 78 30 74 28 60 M50 92 C52 80 74 76 74 62 M50 92 L50 118 M28 60 C26 50 40 44 50 44 C60 44 74 50 74 62" stroke="#d9c9a4" stroke-width="5" fill="none" stroke-linecap="round"/>
       <circle cx="50" cy="92" r="7" fill="#d9c9a4"/>
       <g fill="#b9c69a"><circle cx="8" cy="50" r="5"/><circle cx="14" cy="56" r="4"/><circle cx="92" cy="48" r="5"/><circle cx="88" cy="56" r="3.5"/><circle cx="10" cy="125" r="5"/><circle cx="92" cy="128" r="5"/><circle cx="86" cy="122" r="3.5"/></g>
     </svg>
-    <button class="bld" data-open="summon" style="left:28%;top:43%"><span class="bld-ic" data-icon="gi:beer-stein" data-size="30"></span><b>Taverne</b><span>Beschwören</span></button>
-    <button class="bld" data-open="shop" style="left:74%;top:44%"><span class="bld-ic" data-icon="gi:shop" data-size="30"></span><b>Markt</b><span>Truhen, Siegel</span></button>
-    <button class="bld" data-open="coll" style="left:50%;top:24%"><span class="bld-ic" data-icon="gi:locked-chest" data-size="30"></span><b>Schatzkammer</b><span>Flammen, Titel</span></button>
-    <button class="bld" data-open="settings" style="left:50%;top:80%"><span class="bld-ic" data-icon="gi:castle" data-size="30"></span><b>Rathaus</b><span>Sync, YPT</span></button>
+    <button class="bld" data-open="summon" style="left:28%;top:43%"><span class="bld-ic" data-icon="gi:beer-stein" data-size="30"></span><b>Tavern</b><span>Summon</span></button>
+    <button class="bld" data-open="shop" style="left:74%;top:44%"><span class="bld-ic" data-icon="gi:shop" data-size="30"></span><b>Market</b><span>Chests, seals</span></button>
+    <button class="bld" data-open="coll" style="left:50%;top:24%"><span class="bld-ic" data-icon="gi:locked-chest" data-size="30"></span><b>Treasury</b><span>Flames, titles</span></button>
+    <button class="bld" data-open="settings" style="left:50%;top:80%"><span class="bld-ic" data-icon="gi:castle" data-size="30"></span><b>Town hall</b><span>Sync, YPT</span></button>
   </div>
   <div data-building="summon" hidden>
   <div class="card">
-    <h2>Beschwören</h2>
+    <h2>Summon</h2>
     <p class="note" id="sumHint"></p>
     <div class="row game-btns">
-      <button class="main" id="sumOne"><span data-icon="gi:wax-seal" data-size="18"></span> 1× beschwören</button>
-      <button class="main" id="sumTen"><span data-icon="gi:wax-seal" data-size="18"></span> 10× beschwören</button>
+      <button class="main" id="sumOne"><span data-icon="gi:wax-seal" data-size="18"></span> Summon 1×</button>
+      <button class="main" id="sumTen"><span data-icon="gi:wax-seal" data-size="18"></span> Summon 10×</button>
     </div>
     <p class="note odds" id="sumOdds"></p>
   </div>
@@ -101,9 +101,9 @@
   </div>
   <div data-building="coll" hidden>
   <div class="card">
-    <div class="subjhead"><h2>Sammlung</h2><span class="price" id="collCount"></span></div>
+    <div class="subjhead"><h2>Collection</h2><span class="price" id="collCount"></span></div>
     <div class="coll-tabs">
-      <button data-coll="flame">Flammen</button><button data-coll="title">Titel</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
+      <button data-coll="flame">Flames</button><button data-coll="title">Titles</button><button data-coll="timer" id="collTimers" hidden>Timer</button>
     </div>
     <div class="coll" id="coll"></div>
     <div class="info" id="collInfo"></div>
@@ -111,42 +111,42 @@
   </div>
   <div data-building="settings" hidden>
   <div class="card">
-    <h2>Sync mit GitHub</h2>
+    <h2>Sync with GitHub</h2>
     <div id="syncOff">
-      <p class="note">Dein Fortschritt liegt in einem privaten Gist auf deinem GitHub-Konto. So ist er auf Handy und PC gleich, und Claude kann den Timer starten. Du brauchst einmal pro Gerät einen Token, der nur Gists darf.</p>
-      <p class="note"><a id="tokenLink" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Lern-Pomodoro" target="_blank" rel="noopener">Token auf GitHub erstellen</a> (nur „gist“ ankreuzen), dann hier einfügen:</p>
+      <p class="note">Your progress is kept in a private gist on your GitHub account. That keeps it the same on phone and PC, and Claude can start the timer. Each device needs a token once, allowed to use gists only.</p>
+      <p class="note"><a id="tokenLink" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Lern-Pomodoro" target="_blank" rel="noopener">Create a token on GitHub</a> (tick only “gist”), then paste it here:</p>
       <div class="row">
-        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub-Token">
-        <button class="main" id="connect">Verbinden</button>
+        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub token">
+        <button class="main" id="connect">Connect</button>
       </div>
     </div>
     <div id="syncOn" hidden>
-      <p class="note" id="syncInfo">Verbunden.</p>
-      <div class="row"><button id="syncNow">Jetzt synchronisieren</button><button id="disconnect">Trennen</button></div>
+      <p class="note" id="syncInfo">Connected.</p>
+      <div class="row"><button id="syncNow">Sync now</button><button id="disconnect">Disconnect</button></div>
     </div>
   </div>
 
   <div class="card" id="yptCard">
-    <h2>Mit YPT verbinden</h2>
-    <p class="note">Jede Lernphase startet auch deinen YPT-Timer für ein Fach und stoppt ihn am Ende wieder. Das läuft über YPTs Server, auf Handy und PC. Die Verbindung ist inoffiziell: YPT kann sie jederzeit ändern, und sie kann gegen YPTs Nutzungsbedingungen verstoßen.</p>
+    <h2>Connect to YPT</h2>
+    <p class="note">Every study phase also starts your YPT timer for a subject and stops it at the end. This runs through YPT's servers, on phone and PC. The connection is unofficial: YPT can change it at any time, and it may break YPT's terms of use.</p>
     <div id="yptOff">
-      <p class="note">Melde dich mit deiner YPT-E-Mail an. Das Passwort geht nur an YPT und wird nicht gespeichert. Konten mit Google-, Apple- oder Kakao-Login haben hier kein Passwort.</p>
+      <p class="note">Sign in with your YPT email. The password goes only to YPT and is not saved. Accounts that sign in with Google, Apple or Kakao have no password here.</p>
       <div class="form">
-        <input id="yptEmail" type="email" autocomplete="username" placeholder="YPT-E-Mail" aria-label="YPT-E-Mail">
-        <input id="yptPass" type="password" autocomplete="current-password" placeholder="YPT-Passwort" aria-label="YPT-Passwort">
-        <button class="main" id="yptLogin">Bei YPT anmelden</button>
+        <input id="yptEmail" type="email" autocomplete="username" placeholder="YPT email" aria-label="YPT email">
+        <input id="yptPass" type="password" autocomplete="current-password" placeholder="YPT password" aria-label="YPT password">
+        <button class="main" id="yptLogin">Sign in to YPT</button>
       </div>
     </div>
     <div id="yptOnBox" hidden>
-      <p class="note" id="yptWho">Angemeldet.</p>
-      <p class="note">Deine Fächer stehen im Tab Lernen. Starte eins dort, dann läuft YPT für dieses Fach.</p>
-      <label class="toggle"><input type="checkbox" id="yptOn"> YPT mit jeder Lernphase starten und stoppen</label>
+      <p class="note" id="yptWho">Signed in.</p>
+      <p class="note">Your subjects are in the Study tab. Start one there and YPT runs for that subject.</p>
+      <label class="toggle"><input type="checkbox" id="yptOn"> Start and stop YPT with every study phase</label>
       <p class="note" id="yptState" style="margin-top:10px"></p>
-      <div class="row"><button class="link" id="yptLogout">Abmelden</button></div>
+      <div class="row"><button class="link" id="yptLogout">Sign out</button></div>
     </div>
   </div>
-  <div class="sync" id="sync">Speichert auf diesem Gerät</div>
-  <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Nach Updates suchen</button></div>
+  <div class="sync" id="sync">Saved on this device</div>
+  <div class="sync"><span id="ver"></span> · <button class="link" id="checkUpd">Check for updates</button></div>
   <div class="sync credits">Icons: <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC), <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0)</div>
   </div>
   </section>
@@ -158,7 +158,7 @@
         <path class="f1" id="fl1" d="M17 2C19 10 29 14 29 25a12 12 0 0 1-24 0c0-6 4-9 5-14 2 4 3 6 5 7 0-6 1-11 2-16Z"/>
         <path class="f2" id="fl2" d="M17 20c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 2 2 3 0-3 0-5 1-7Z"/>
       </svg>
-      <div style="min-width:0"><div class="big" id="streak">0</div><div class="lbl" id="streakLbl">Tage Streak</div></div>
+      <div style="min-width:0"><div class="big" id="streak">0</div><div class="lbl" id="streakLbl">day streak</div></div>
     </div>
     <div class="stat">
       <div class="lvl" id="lvl">1</div>
@@ -202,43 +202,43 @@
   </div>
 
   <div class="card today">
-    <div class="todayrow"><span>Heute gelernt</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
+    <div class="todayrow"><span>Studied today</span><span><b id="todayMin">0</b> / <b id="goalMin">50</b> min</span></div>
     <div class="bar"><i id="todayBar"></i></div>
-    <div class="sub" id="todayMsg">Schaff dein Tagesziel, damit die Flamme weiterbrennt.</div>
+    <div class="sub" id="todayMsg">Reach your daily goal to keep the flame burning.</div>
   </div>
 
   <div class="card">
     <h2>Deine Lerntage</h2>
     <div class="gridwrap"><div class="grid" id="grid"></div></div>
-    <div class="legend"><span>weniger</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>mehr</span><span style="width:10px"></span><span class="tile ice"></span><span>eingefroren</span></div>
-    <div class="info" id="info">Tippe auf einen Tag für Details.</div>
+    <div class="legend"><span>less</span><span class="tile"></span><span class="tile l1"></span><span class="tile l2"></span><span class="tile l3"></span><span class="tile l4"></span><span>more</span><span style="width:10px"></span><span class="tile ice"></span><span>frozen</span></div>
+    <div class="info" id="info">Tap a day for details.</div>
   </div>
 
   <div class="card chest-card" id="chestCard">
     <div class="chest-row">
       <div class="ic" style="background:var(--gold);color:#fff" aria-hidden="true" data-icon="gi:locked-chest" data-size="28"></div>
-      <div class="tx"><div class="nm" id="chestCount">Keine Truhe bereit</div><div class="ds" id="chestHint"></div></div>
-      <button class="main" id="chestOpen" disabled>Öffnen</button>
+      <div class="tx"><div class="nm" id="chestCount">No chest ready</div><div class="ds" id="chestHint"></div></div>
+      <button class="main" id="chestOpen" disabled>Open</button>
     </div>
   </div>
 
   <div class="card" id="quests">
     <h2>Quests</h2>
     <div class="quest-list" id="questsDay"></div>
-    <details class="quest-week"><summary id="questWeekSum">Diese Woche</summary><div class="quest-list" id="questsWeek"></div></details>
+    <details class="quest-week"><summary id="questWeekSum">This week</summary><div class="quest-list" id="questsWeek"></div></details>
   </div>
 
   <div class="card" id="subjCard" hidden>
-    <div class="subjhead"><h2>Fächer</h2><button class="link" id="subjReload">Aus YPT laden</button></div>
+    <div class="subjhead"><h2>Subjects</h2><button class="link" id="subjReload">Load from YPT</button></div>
     <div class="subjects" id="subjects"></div>
   </div>
 
   </section>
 
   <section class="tab pq" data-tab="helden">
-  <div class="pq-title"><div><h2>Helden</h2><span class="pq-sub" id="heroCount"></span></div><button class="pq-btn" id="heroAuto">Stärkstes Team</button></div>
+  <div class="pq-title"><div><h2>Heroes</h2><span class="pq-sub" id="heroCount"></span></div><button class="pq-btn" id="heroAuto">Strongest team</button></div>
   <div class="pq-pan">
-    <h3>Dein Team</h3>
+    <h3>Your team</h3>
     <div class="hd-team" id="heroTeamRow"></div>
     <div class="cg-tiers" id="heroTiers"></div>
   </div>
@@ -248,29 +248,29 @@
   </section>
 </div></main>
 
-<nav class="tabbar" aria-label="Bereiche"><div class="tabbar-in">
-  <button data-go="kampagne" data-name="Kampagne"><span data-icon="gi:crossed-swords" data-size="24"></span><span class="tl">Kampagne</span></button>
-  <button data-go="abenteuer" data-name="Abenteuer"><span data-icon="gi:treasure-map" data-size="24"></span><span class="tl">Abenteuer</span></button>
-  <button data-go="stadt" data-name="Stadt"><span data-icon="gi:castle" data-size="24"></span><span class="tl">Stadt</span></button>
-  <button data-go="lernen" data-name="Lernen"><span data-icon="gi:spell-book" data-size="24"></span><span class="tl">Lernen</span></button>
-  <button data-go="helden" data-name="Helden"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Helden</span></button>
+<nav class="tabbar" aria-label="Sections"><div class="tabbar-in">
+  <button data-go="kampagne" data-name="Campaign"><span data-icon="gi:crossed-swords" data-size="24"></span><span class="tl">Campaign</span></button>
+  <button data-go="abenteuer" data-name="Adventure"><span data-icon="gi:treasure-map" data-size="24"></span><span class="tl">Adventure</span></button>
+  <button data-go="stadt" data-name="Town"><span data-icon="gi:castle" data-size="24"></span><span class="tl">Town</span></button>
+  <button data-go="lernen" data-name="Study"><span data-icon="gi:spell-book" data-size="24"></span><span class="tl">Study</span></button>
+  <button data-go="helden" data-name="Heroes"><span data-icon="gi:swordman" data-size="24"></span><span class="tl">Heroes</span></button>
   <div class="tab-slider" id="tabSlider" aria-hidden="true"><div class="tab-clone" id="tabClone"></div></div>
 </div></nav>
 
-<div class="cg" id="cgOv" lang="en" hidden role="dialog" aria-modal="true" aria-label="Übungskampf"></div>
+<div class="cg" id="cgOv" lang="en" hidden role="dialog" aria-modal="true" aria-label="Practice fight"></div>
 
 <div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
   <div class="chestbox pickbox">
-    <h3 id="pickTitle">Was lernst du?</h3>
+    <h3 id="pickTitle">What are you studying?</h3>
     <div class="pick-list" id="pickList"></div>
-    <div class="ctrl"><button id="pickNone">Ohne Fach</button><button id="pickClose">Abbrechen</button></div>
+    <div class="ctrl"><button id="pickNone">No subject</button><button id="pickClose">Cancel</button></div>
   </div>
 </div>
 
-<div class="overlay pq pq-sheet" id="sumOv" hidden role="dialog" aria-modal="true" aria-label="Beschwörung">
+<div class="overlay pq pq-sheet" id="sumOv" hidden role="dialog" aria-modal="true" aria-label="Summoning">
   <div class="pq-sheet-in sumbox">
     <div class="sum-cards" id="sumCards"></div>
-    <div class="pq-btns"><button class="pq-btn" id="sumAll">Alle zeigen</button><button class="pq-btn main" id="sumDone" hidden>Fertig</button></div>
+    <div class="pq-btns"><button class="pq-btn" id="sumAll">Show all</button><button class="pq-btn main" id="sumDone" hidden>Done</button></div>
   </div>
 </div>
 
@@ -292,7 +292,7 @@
 
 <div class="overlay pq pq-sheet" id="startOv" hidden role="dialog" aria-modal="true" aria-labelledby="startTitle">
   <div class="pq-sheet-in">
-    <h3 id="startTitle">Wähle deine Start-Faction</h3>
+    <h3 id="startTitle">Choose your starting faction</h3>
     <p class="pq-note" id="startNote"></p>
     <div class="start-list" id="startList"></div>
   </div>
@@ -303,13 +303,13 @@
     <div class="chest-big" data-icon="gi:locked-chest" data-size="110"></div>
     <div class="reel" id="reel"><div class="reel-mark"></div><div class="reel-track" id="reelTrack"></div></div>
     <div class="chest-prev" id="chestPreview"></div>
-    <h3 id="chestTitle" aria-live="polite">Truhe</h3>
+    <h3 id="chestTitle" aria-live="polite">Chest</h3>
     <p id="chestDetail" aria-live="polite"></p>
     <div class="ctrl">
-      <button class="main" id="chestNext">Öffnen</button>
-      <button id="chestEquip" hidden>Anlegen</button>
-      <button class="link" id="chestAnim" hidden>Animation einschalten</button>
-      <button id="chestClose">Schließen</button>
+      <button class="main" id="chestNext">Open</button>
+      <button id="chestEquip" hidden>Equip</button>
+      <button class="link" id="chestAnim" hidden>Turn on the animation</button>
+      <button id="chestClose">Close</button>
     </div>
   </div>
 </div>
