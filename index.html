@@ -9,8 +9,8 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>Lern-Pomodoro</title>
-  <script type="module" crossorigin src="./assets/index-DUoHMug_.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BJHjzIE1.css">
+  <script type="module" crossorigin src="./assets/index-3w6oDQUT.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-1ZMoQ9nU.css">
 </head>
 <body>
 <canvas id="fx"></canvas>
@@ -54,6 +54,11 @@
     <span class="pq-mode-ic" data-icon="gi:crossed-swords" data-size="34"></span>
     <div class="pq-mode-tx"><h3>Practice fight</h3><p>All 36 cards and 6 heroes are free. Try out teams, without rewards and without risk.</p></div>
     <button class="pq-btn main" id="cgOpen">Build a team</button>
+  </div>
+  <div class="pq-mode">
+    <span class="pq-mode-ic" data-icon="gi:power-lightning" data-size="34"></span>
+    <div class="pq-mode-tx"><h3>Real-time fight <small>prototype</small></h3><p>The new fight: energy, ultimates by tap, hero spells. Your team against a random one.</p></div>
+    <button class="pq-btn main" id="rtOpen">Fight</button>
   </div>
   <div class="pq-mode soon">
     <span class="pq-mode-ic" data-icon="gi:stone-tower" data-size="34"></span>
@@ -258,6 +263,7 @@
 </div></nav>
 
 <div class="cg" id="cgOv" lang="en" hidden role="dialog" aria-modal="true" aria-label="Practice fight"></div>
+<div class="rt" id="rtOv" hidden role="dialog" aria-modal="true" aria-label="Real-time fight"></div>
 
 <div class="overlay" id="pickOv" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
   <div class="chestbox pickbox">
